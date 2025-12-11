@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "cd xenteck-landing && npm install && npm run build",
+  "devCommand": "cd xenteck-landing && npm run dev",
+  "installCommand": "cd xenteck-landing && npm install",
+  "outputDirectory": "xenteck-landing/.next",
+  "framework": "nextjs"
+}
