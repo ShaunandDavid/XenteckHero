@@ -141,7 +141,7 @@ export default function Home() {
     <div
       className="relative min-h-screen overflow-hidden bg-black text-gray-100"
       style={{
-        backgroundImage: "url('/assets/HeroPhoto.png')",
+        backgroundImage: "url('/assets/Hero-Photo.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
