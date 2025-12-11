@@ -371,14 +371,14 @@ export default function Home() {
           </div>
 
           <div className="mt-4 flex flex-col gap-3">
-            <div className="flex max-h-72 flex-col gap-3 overflow-y-auto rounded-lg border border-white/10 bg-black/30 p-4">
+            <div className="flex max-h-72 flex-col gap-3 overflow-y-auto rounded-lg border border-emerald-400/30 bg-gradient-to-br from-emerald-500/10 via-black/40 to-cyan-500/10 p-4 shadow-[0_10px_50px_-30px_rgba(52,211,153,0.8)]">
               {chatMessages.map((msg, idx) => (
                 <div
                   key={idx}
                   className={`max-w-[90%] rounded-md px-3 py-2 text-sm ${
                     msg.role === "assistant"
-                      ? "bg-white/10 text-white"
-                      : "bg-emerald-500/15 text-emerald-100"
+                      ? "bg-white/15 text-white border border-white/10 shadow-[0_10px_30px_-20px_rgba(255,255,255,0.6)]"
+                      : "bg-emerald-500/20 text-emerald-50 border border-emerald-300/30 shadow-[0_10px_30px_-25px_rgba(52,211,153,0.8)]"
                   }`}
                 >
                   {msg.content}
@@ -404,14 +404,11 @@ export default function Home() {
                 type="button"
                 onClick={sendChat}
                 disabled={chatStatus === "sending"}
-                className="inline-flex items-center justify-center rounded-md bg-white px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-70"
+                className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-emerald-400 to-cyan-400 px-5 py-2.5 text-sm font-semibold text-black shadow-[0_10px_30px_-15px_rgba(34,211,238,0.7)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
               >
                 {chatStatus === "sending" ? "Thinking..." : "Send"}
               </button>
             </div>
-            <p className="text-xs text-gray-400">
-              Uses your configured model key (OPENAI_API_KEY); we keep context tight and concise.
-            </p>
           </div>
         </section>
       </main>
