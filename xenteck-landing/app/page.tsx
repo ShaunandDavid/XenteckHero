@@ -1,6 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import type { FormEvent } from "react";
+
+type ChatMessage = {
+  role: "user" | "assistant";
+  content: string;
+};
 
 const processPoints = [
   {
@@ -21,6 +27,7 @@ const mailtoLink =
   "mailto:admin@xenteck.com?subject=Fit%20Call%20%E2%80%93%20XenTeck&body=Name:%0ABusiness:%0AWebsite:%0ATime%20zone:%0AA%20couple%20of%20good%20time%20windows:%0A";
 
 type SubmissionStatus = "idle" | "loading" | "success" | "error";
+type ChatStatus = "idle" | "sending" | "error";
 
 export default function Home() {
   const [name, setName] = useState("");
@@ -29,8 +36,18 @@ export default function Home() {
   const [headache, setHeadache] = useState("");
   const [status, setStatus] = useState<SubmissionStatus>("idle");
   const [feedback, setFeedback] = useState("");
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
+    {
+      role: "assistant",
+      content:
+        "Hey, I'm the XenTeck AI systems assistant. Ask me about the Snapshot, our sprints, or whether we're a fit.",
+    },
+  ]);
+  const [chatInput, setChatInput] = useState("");
+  const [chatStatus, setChatStatus] = useState<ChatStatus>("idle");
+  const [chatError, setChatError] = useState("");
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setStatus("loading");
     setFeedback("");
@@ -77,8 +94,60 @@ export default function Home() {
     }
   };
 
+  const sendChat = async () => {
+    const question = chatInput.trim();
+    if (!question) return;
+
+    const nextMessages: ChatMessage[] = [
+      ...chatMessages,
+      { role: "user", content: question },
+    ];
+
+    setChatMessages(nextMessages);
+    setChatStatus("sending");
+    setChatError("");
+    setChatInput("");
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: nextMessages.slice(-8) }),
+      });
+
+      const data = (await response.json().catch(() => ({}))) as {
+        message?: string;
+        error?: string;
+      };
+
+      if (!response.ok || !data.message) {
+        throw new Error(data.error || "Chat failed. Please try again.");
+      }
+
+      setChatMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: data.message ?? "" },
+      ]);
+      setChatStatus("idle");
+    } catch (error) {
+      setChatStatus("error");
+      setChatError(
+        error instanceof Error ? error.message : "Chat failed. Please try again.",
+      );
+    }
+  };
+
   return (
-    <div className="relative min-h-screen overflow-hidden bg-black text-gray-100">
+    <div
+      className="relative min-h-screen overflow-hidden bg-black text-gray-100"
+      style={{
+        backgroundImage: "url('/assets/hero.svg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="absolute inset-0 bg-black/75" />
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-24 top-10 h-80 w-80 rounded-full bg-emerald-500/15 blur-3xl" />
         <div className="absolute right-[-6rem] top-32 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
@@ -286,6 +355,64 @@ export default function Home() {
           >
             Email us to book your fit call
           </a>
+        </section>
+
+        <section className="rounded-2xl border border-white/10 bg-neutral-950/70 p-8 shadow-[0_20px_80px_-60px_rgba(16,185,129,0.35)] backdrop-blur">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h3 className="text-xl font-semibold text-white">Ask XenTeck</h3>
+              <p className="text-sm text-gray-300">
+                Live answers about our snapshot, sprints, and fit calls. Powered by your AI key.
+              </p>
+            </div>
+            {chatError && (
+              <span className="text-xs text-red-300">{chatError}</span>
+            )}
+          </div>
+
+          <div className="mt-4 flex flex-col gap-3">
+            <div className="flex max-h-72 flex-col gap-3 overflow-y-auto rounded-lg border border-white/10 bg-black/30 p-4">
+              {chatMessages.map((msg, idx) => (
+                <div
+                  key={idx}
+                  className={`max-w-[90%] rounded-md px-3 py-2 text-sm ${
+                    msg.role === "assistant"
+                      ? "bg-white/10 text-white"
+                      : "bg-emerald-500/15 text-emerald-100"
+                  }`}
+                >
+                  {msg.content}
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+              <input
+                type="text"
+                value={chatInput}
+                onChange={(event) => setChatInput(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" && !event.shiftKey) {
+                    event.preventDefault();
+                    sendChat();
+                  }
+                }}
+                placeholder="Ask about the snapshot, sprints, or fit calls..."
+                className="flex-1 rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-500 focus:border-emerald-400 focus:outline-none focus:ring-1 focus:ring-emerald-400/50"
+              />
+              <button
+                type="button"
+                onClick={sendChat}
+                disabled={chatStatus === "sending"}
+                className="inline-flex items-center justify-center rounded-md bg-white px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-70"
+              >
+                {chatStatus === "sending" ? "Thinking..." : "Send"}
+              </button>
+            </div>
+            <p className="text-xs text-gray-400">
+              Uses your configured model key (OPENAI_API_KEY); we keep context tight and concise.
+            </p>
+          </div>
         </section>
       </main>
     </div>
