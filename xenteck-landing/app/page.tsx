@@ -211,7 +211,7 @@ export default function Home() {
 
         <section
           aria-labelledby="snapshot"
-          className="rounded-3xl border border-white/10 bg-neutral-900/70 p-8 shadow-[0_30px_120px_-80px_rgba(16,185,129,0.6)] backdrop-blur lg:p-10"
+          className="rounded-3xl border border-white/15 bg-black/50 p-8 shadow-[0_30px_120px_-80px_rgba(16,185,129,0.6)] backdrop-blur lg:p-10"
         >
           <div className="flex flex-col gap-3">
             <h2 id="snapshot" className="text-2xl font-semibold text-white">
