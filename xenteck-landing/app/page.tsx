@@ -147,7 +147,7 @@ export default function Home() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="absolute inset-0 bg-black/75" />
+      <div className="absolute inset-0 bg-black/60" />
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-24 top-10 h-80 w-80 rounded-full bg-emerald-500/15 blur-3xl" />
         <div className="absolute right-[-6rem] top-32 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
@@ -194,7 +194,7 @@ export default function Home() {
               {processPoints.map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-xl border border-white/10 bg-white/5 p-4 shadow-[0_1px_0_rgba(255,255,255,0.08)]"
+                  className="rounded-xl border border-white/10 bg-white/10 p-4 shadow-[0_1px_0_rgba(255,255,255,0.08)]"
                 >
                   <div className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white/10 text-emerald-300">
                     <span className="text-sm font-semibold">*</span>
@@ -211,7 +211,7 @@ export default function Home() {
 
         <section
           aria-labelledby="snapshot"
-          className="rounded-3xl border border-white/10 bg-neutral-950/70 p-8 shadow-[0_30px_120px_-80px_rgba(16,185,129,0.6)] backdrop-blur lg:p-10"
+          className="rounded-3xl border border-white/10 bg-neutral-900/70 p-8 shadow-[0_30px_120px_-80px_rgba(16,185,129,0.6)] backdrop-blur lg:p-10"
         >
           <div className="flex flex-col gap-3">
             <h2 id="snapshot" className="text-2xl font-semibold text-white">
@@ -340,7 +340,7 @@ export default function Home() {
           </p>
         </section>
 
-        <section id="fit-call" className="space-y-4 rounded-2xl border border-white/10 bg-white/5 p-8 shadow-[0_20px_80px_-60px_rgba(255,255,255,0.45)]">
+        <section id="fit-call" className="space-y-4 rounded-2xl border border-white/10 bg-white/10 p-8 shadow-[0_20px_80px_-60px_rgba(255,255,255,0.45)]">
           <h2 className="text-2xl font-semibold text-white">
             Book a 20-minute fit call
           </h2>
