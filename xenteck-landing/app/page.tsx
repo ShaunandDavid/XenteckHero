@@ -535,6 +535,15 @@ export default function Home() {
               admin@xenteck.com
             </a>
           </p>
+          <div className="mt-4 flex justify-center gap-4">
+            <a href="/privacy" className="hover:text-white transition">
+              Privacy Policy
+            </a>
+            <span className="text-gray-600">|</span>
+            <a href="/terms" className="hover:text-white transition">
+              Terms of Service
+            </a>
+          </div>
         </footer>
       </main>
     </div>
