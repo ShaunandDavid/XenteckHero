@@ -77,9 +77,6 @@ export const metadata: Metadata = {
   },
   category: "Business Services",
   classification: "AI Automation Consulting",
-  other: {
-    "google-site-verification": "YOUR_GOOGLE_VERIFICATION_CODE",
-  },
 };
 
 // JSON-LD Structured Data
