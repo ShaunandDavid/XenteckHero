@@ -37,6 +37,7 @@ type ChatStatus = "idle" | "sending" | "error";
 export default function Home() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [website, setWebsite] = useState("");
   const [headache, setHeadache] = useState("");
   const [status, setStatus] = useState<SubmissionStatus>("idle");
@@ -89,6 +90,7 @@ export default function Home() {
       setFeedback("Got it. We will send your snapshot to your email.");
       setName("");
       setEmail("");
+      setPhone("");
       setWebsite("");
       setHeadache("");
     } catch (error) {
@@ -307,6 +309,26 @@ export default function Home() {
                 className="w-full rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-500 focus:border-emerald-400 focus:outline-none focus:ring-1 focus:ring-emerald-400/50"
                 placeholder="you@company.com"
                 autoComplete="email"
+              />
+            </div>
+
+            <div className="sm:col-span-1">
+              <label
+                className="mb-2 block text-sm text-gray-300"
+                htmlFor="phone"
+              >
+                Phone number
+              </label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                value={phone}
+                onChange={(event) => setPhone(event.target.value)}
+                className="w-full rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-500 focus:border-emerald-400 focus:outline-none focus:ring-1 focus:ring-emerald-400/50"
+                placeholder="(555) 123-4567"
+                autoComplete="tel"
+                inputMode="tel"
               />
             </div>
 
