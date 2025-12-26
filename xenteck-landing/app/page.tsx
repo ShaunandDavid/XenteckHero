@@ -389,6 +389,15 @@ export default function Home() {
                 </p>
               )}
             </div>
+            <p className="sm:col-span-2 text-xs leading-relaxed text-gray-500">
+              By providing your phone number, you agree to receive SMS messages
+              from XenTeck. Msg frequency varies. Msg &amp; data rates may apply.
+              Reply STOP to opt out. HELP for help.{" "}
+              <a href="/privacy" className="underline underline-offset-2">
+                Privacy Policy
+              </a>
+              .
+            </p>
           </form>
         </section>
 
