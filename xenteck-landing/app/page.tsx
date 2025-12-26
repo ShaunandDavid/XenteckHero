@@ -150,7 +150,7 @@ export default function Home() {
       style={{
         backgroundImage: "url('/assets/Hero-Photo.png')",
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: "right top",
         backgroundRepeat: "no-repeat",
       }}
     >
@@ -246,6 +246,21 @@ export default function Home() {
             </section>
           </div>
         </header>
+
+        <section
+          aria-labelledby="hero-visual-heading"
+          className="rounded-3xl border border-white/10 bg-black/40 p-2 shadow-[0_30px_120px_-80px_rgba(15,118,110,0.45)]"
+        >
+          <h2 id="hero-visual-heading" className="sr-only">
+            Speed to lead visual
+          </h2>
+          <img
+            src="/assets/Hero-Photo2.png"
+            alt="XenTeck speed to lead visual"
+            className="h-full w-full rounded-[1.4rem] object-cover"
+            loading="lazy"
+          />
+        </section>
 
         {/* Snapshot Form Section */}
         <section
