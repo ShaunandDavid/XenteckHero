@@ -175,7 +175,7 @@ export default function Home() {
         aria-hidden="true"
       />
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute -left-24 top-10 h-80 w-80 rounded-full bg-emerald-500/15 blur-3xl" />
+        <div className="absolute -left-24 top-10 h-80 w-80 rounded-full bg-cyan-500/15 blur-3xl" />
         <div className="absolute right-[-6rem] top-32 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
         <div className="absolute left-20 top-96 h-64 w-64 rounded-full bg-purple-500/10 blur-3xl" />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
@@ -206,7 +206,7 @@ export default function Home() {
               <div className="max-w-2xl space-y-10">
                 <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-black/60 px-4 py-2 text-xs uppercase tracking-[0.2em] text-gray-200">
                   <span
-                    className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_0_6px_rgba(52,211,153,0.15)]"
+                    className="h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_0_6px_rgba(34,211,238,0.15)]"
                     aria-hidden="true"
                   />
                   <span>Speed-to-Lead / Instant Booking Links</span>
@@ -228,16 +228,16 @@ export default function Home() {
 
                   {/* Speed Stats Bar */}
                   <div
-                    className="flex flex-wrap gap-6 rounded-xl border border-emerald-400/40 bg-emerald-950/60 p-4 shadow-[0_10px_50px_-20px_rgba(52,211,153,0.5)]"
+                    className="flex flex-wrap gap-6 rounded-xl border border-cyan-400/40 bg-cyan-950/60 p-4 shadow-[0_10px_50px_-20px_rgba(34,211,238,0.5)]"
                     role="region"
                     aria-label="Industry insight statistics"
                   >
                     {stats.map((stat) => (
                       <div key={stat.label} className="flex items-baseline gap-1">
-                        <span className="text-3xl font-bold text-emerald-400">
+                        <span className="text-3xl font-bold text-cyan-400">
                           {stat.value}
                         </span>
-                        <span className="text-lg text-emerald-300">{stat.unit}</span>
+                        <span className="text-lg text-cyan-300">{stat.unit}</span>
                         <span className="ml-2 text-sm text-gray-300">
                           {stat.label}
                         </span>
@@ -273,10 +273,10 @@ export default function Home() {
           <section
             id="demo"
             aria-labelledby="demo-heading"
-            className="relative scroll-mt-8 overflow-hidden rounded-3xl border border-emerald-400/30 bg-black/40 p-8 shadow-[0_40px_140px_-80px_rgba(16,185,129,0.9)] backdrop-blur lg:p-10"
+            className="relative scroll-mt-8 overflow-hidden rounded-3xl border border-cyan-400/30 bg-black/40 p-8 shadow-[0_40px_140px_-80px_rgba(34,211,238,0.9)] backdrop-blur lg:p-10"
           >
             <div
-              className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_100%_at_20%_0%,rgba(16,185,129,0.18),transparent_60%)]"
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_100%_at_20%_0%,rgba(34,211,238,0.18),transparent_60%)]"
               aria-hidden="true"
             />
             <div className="relative z-10">
@@ -311,7 +311,7 @@ export default function Home() {
                 type="text"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
-                className="w-full rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-500 focus:border-emerald-400 focus:outline-none focus:ring-1 focus:ring-emerald-400/50"
+                className="w-full rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/50"
                 placeholder="Your name"
                 autoComplete="name"
               />
@@ -331,7 +331,7 @@ export default function Home() {
                 required
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                className="w-full rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-500 focus:border-emerald-400 focus:outline-none focus:ring-1 focus:ring-emerald-400/50"
+                className="w-full rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/50"
                 placeholder="you@company.com"
                 autoComplete="email"
               />
@@ -350,7 +350,7 @@ export default function Home() {
                 type="tel"
                 value={phone}
                 onChange={(event) => setPhone(event.target.value)}
-                className="w-full rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-500 focus:border-emerald-400 focus:outline-none focus:ring-1 focus:ring-emerald-400/50"
+                className="w-full rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/50"
                 placeholder="(555) 123-4567"
                 autoComplete="tel"
                 inputMode="tel"
@@ -370,7 +370,7 @@ export default function Home() {
                 type="url"
                 value={website}
                 onChange={(event) => setWebsite(event.target.value)}
-                className="w-full rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-500 focus:border-emerald-400 focus:outline-none focus:ring-1 focus:ring-emerald-400/50"
+                className="w-full rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/50"
                 placeholder="https://yoursite.com"
                 autoComplete="url"
               />
@@ -389,7 +389,7 @@ export default function Home() {
                 rows={3}
                 value={headache}
                 onChange={(event) => setHeadache(event.target.value)}
-                className="w-full rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-500 focus:border-emerald-400 focus:outline-none focus:ring-1 focus:ring-emerald-400/50"
+                className="w-full rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/50"
                 placeholder="What keeps breaking or slowing you down?"
               />
             </div>
@@ -407,7 +407,7 @@ export default function Home() {
                   role="status"
                   aria-live="polite"
                   className={`text-sm ${
-                    status === "success" ? "text-emerald-300" : "text-red-300"
+                    status === "success" ? "text-cyan-300" : "text-red-300"
                   }`}
                 >
                   {feedback}
@@ -430,7 +430,7 @@ export default function Home() {
           {/* Industry Insights Section */}
           <section
             aria-labelledby="industry-insights-heading"
-            className="scroll-mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_25px_80px_-60px_rgba(16,185,129,0.45)] sm:p-8"
+            className="scroll-mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_25px_80px_-60px_rgba(34,211,238,0.45)] sm:p-8"
           >
             <h2
               id="industry-insights-heading"
@@ -456,9 +456,9 @@ export default function Home() {
 
           {/* Process Section */}
           <section aria-labelledby="process-heading" className="scroll-mt-8">
-            <div className="relative max-w-4xl rounded-3xl border border-emerald-400/25 bg-white/[0.005] p-6 backdrop-blur-xl shadow-[0_35px_120px_-80px_rgba(16,185,129,0.8)] sm:p-8">
+            <div className="relative max-w-4xl rounded-3xl border border-cyan-400/25 bg-white/[0.005] p-6 backdrop-blur-xl shadow-[0_35px_120px_-80px_rgba(34,211,238,0.8)] sm:p-8">
               <div
-                className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(90%_120%_at_15%_0%,rgba(16,185,129,0.18),transparent_65%)]"
+                className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(90%_120%_at_15%_0%,rgba(34,211,238,0.18),transparent_65%)]"
                 aria-hidden="true"
               />
               <div className="relative z-10 space-y-6">
@@ -472,9 +472,9 @@ export default function Home() {
                   {processPoints.map((item, index) => (
                     <article
                       key={item.title}
-                      className="rounded-xl border border-white/[0.08] bg-white/[0.01] p-4 shadow-[0_15px_40px_-25px_rgba(16,185,129,0.45)]"
+                      className="rounded-xl border border-white/[0.08] bg-white/[0.01] p-4 shadow-[0_15px_40px_-25px_rgba(34,211,238,0.45)]"
                     >
-                      <div className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-200 ring-1 ring-emerald-400/40 shadow-[0_0_20px_rgba(16,185,129,0.35)]">
+                      <div className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-500/15 text-cyan-200 ring-1 ring-cyan-400/40 shadow-[0_0_20px_rgba(34,211,238,0.35)]">
                         <span className="text-sm font-semibold">
                           {index + 1}
                         </span>
@@ -518,27 +518,27 @@ export default function Home() {
             </h3>
             <ul className="grid gap-2 sm:grid-cols-2 text-gray-300 text-sm">
               <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" aria-hidden="true" />
                 Real Estate Agencies & Brokerages
               </li>
               <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" aria-hidden="true" />
                 Insurance Agencies
               </li>
               <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" aria-hidden="true" />
                 Mortgage Lenders & Brokers
               </li>
               <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" aria-hidden="true" />
                 Recruiting & Staffing Firms
               </li>
               <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" aria-hidden="true" />
                 Marketing & Creative Agencies
               </li>
               <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" aria-hidden="true" />
                 Home Services & Contractors
               </li>
             </ul>
@@ -572,16 +572,16 @@ export default function Home() {
           <section
             id="chat"
             aria-labelledby="chat-heading"
-            className="relative overflow-hidden rounded-2xl border border-emerald-400/30 bg-neutral-950/70 p-8 shadow-[0_35px_120px_-80px_rgba(16,185,129,0.85)] backdrop-blur"
+            className="relative overflow-hidden rounded-2xl border border-cyan-400/30 bg-neutral-950/70 p-8 shadow-[0_35px_120px_-80px_rgba(34,211,238,0.85)] backdrop-blur"
           >
           <div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_100%_at_85%_0%,rgba(16,185,129,0.16),transparent_60%)]"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_100%_at_85%_0%,rgba(34,211,238,0.16),transparent_60%)]"
             aria-hidden="true"
           />
-          <div className="absolute right-6 top-6 hidden items-center gap-2 rounded-full border border-emerald-400/40 bg-black/50 px-3 py-1 text-xs font-semibold text-emerald-100 shadow-[0_15px_40px_-25px_rgba(16,185,129,0.8)] backdrop-blur md:flex">
+          <div className="absolute right-6 top-6 hidden items-center gap-2 rounded-full border border-cyan-400/40 bg-black/50 px-3 py-1 text-xs font-semibold text-cyan-100 shadow-[0_15px_40px_-25px_rgba(34,211,238,0.8)] backdrop-blur md:flex">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/70" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400/70" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
             </span>
             AI Concierge Live
           </div>
@@ -605,7 +605,7 @@ export default function Home() {
 
           <div className="mt-4 flex flex-col gap-3">
             <div
-              className="flex max-h-72 flex-col gap-3 overflow-y-auto rounded-lg border border-emerald-400/30 bg-gradient-to-br from-emerald-500/10 via-black/40 to-cyan-500/10 p-4 shadow-[0_10px_50px_-30px_rgba(52,211,153,0.8)]"
+              className="flex max-h-72 flex-col gap-3 overflow-y-auto rounded-lg border border-cyan-400/30 bg-gradient-to-br from-sky-500/10 via-black/40 to-cyan-500/10 p-4 shadow-[0_10px_50px_-30px_rgba(34,211,238,0.8)]"
               role="log"
               aria-live="polite"
               aria-label="Chat messages"
@@ -616,7 +616,7 @@ export default function Home() {
                   className={`max-w-[90%] rounded-md px-3 py-2 text-sm ${
                     msg.role === "assistant"
                       ? "bg-white/15 text-white border border-white/10 shadow-[0_10px_30px_-20px_rgba(255,255,255,0.6)]"
-                      : "bg-emerald-500/20 text-emerald-50 border border-emerald-300/30 shadow-[0_10px_30px_-25px_rgba(52,211,153,0.8)]"
+                      : "bg-cyan-500/20 text-cyan-50 border border-cyan-300/30 shadow-[0_10px_30px_-25px_rgba(34,211,238,0.8)]"
                   }`}
                 >
                   {msg.content}
@@ -640,13 +640,13 @@ export default function Home() {
                   }
                 }}
                 placeholder="Ask about Speed-to-Lead timing, setup, or fit..."
-                className="flex-1 rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-500 focus:border-emerald-400 focus:outline-none focus:ring-1 focus:ring-emerald-400/50"
+                className="flex-1 rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/50"
               />
               <button
                 type="button"
                 onClick={sendChat}
                 disabled={chatStatus === "sending"}
-                className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-emerald-400 to-cyan-400 px-5 py-2.5 text-sm font-semibold text-black shadow-[0_10px_30px_-15px_rgba(34,211,238,0.7)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
+                className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-sky-400 to-cyan-400 px-5 py-2.5 text-sm font-semibold text-black shadow-[0_10px_30px_-15px_rgba(34,211,238,0.7)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
               >
                 {chatStatus === "sending" ? "Thinking..." : "Send"}
               </button>
@@ -682,12 +682,12 @@ export default function Home() {
         </div>
         <a
           href="#chat"
-          className="fixed bottom-6 right-6 z-40 hidden items-center gap-3 rounded-full border border-emerald-400/40 bg-black/70 px-4 py-3 text-sm font-semibold text-emerald-100 shadow-[0_20px_60px_-25px_rgba(16,185,129,0.9)] backdrop-blur transition hover:brightness-110 md:inline-flex"
+          className="fixed bottom-6 right-6 z-40 hidden items-center gap-3 rounded-full border border-cyan-400/40 bg-black/70 px-4 py-3 text-sm font-semibold text-cyan-100 shadow-[0_20px_60px_-25px_rgba(34,211,238,0.9)] backdrop-blur transition hover:brightness-110 md:inline-flex"
           aria-label="Jump to the Ask XenTeck chat"
         >
           <span className="relative flex h-3 w-3">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/70" />
-            <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-400" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400/70" />
+            <span className="relative inline-flex h-3 w-3 rounded-full bg-cyan-400" />
           </span>
           Ask XenTeck
         </a>
