@@ -157,16 +157,13 @@ export default function Home() {
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
       </div>
 
-      <main className="relative z-10 mx-auto flex max-w-6xl flex-col gap-16 px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <main className="relative z-10 flex flex-col gap-16">
         {/* Hero Section */}
         <section
           aria-labelledby="hero-heading"
-          className="-mx-4 flex flex-col sm:-mx-6 lg:-mx-8"
+          className="flex w-full flex-col"
         >
-          <div
-            className="relative w-full overflow-hidden"
-            style={{ aspectRatio: "16 / 9" }}
-          >
+          <div className="relative w-full min-h-screen overflow-hidden">
             <div
               className="absolute inset-0"
               style={{
@@ -182,8 +179,8 @@ export default function Home() {
               aria-hidden="true"
             />
             <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-              <div className="max-w-2xl space-y-10 rounded-3xl border border-white/10 bg-white/10 p-6 backdrop-blur-xl shadow-[0_25px_70px_-50px_rgba(15,118,110,0.6)] sm:p-8">
-                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em] text-gray-300">
+              <div className="max-w-2xl space-y-10 rounded-3xl border border-white/[0.03] bg-white/[0.005] p-6 backdrop-blur-xl shadow-[0_25px_70px_-50px_rgba(15,118,110,0.6)] sm:p-8">
+                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/[0.03] bg-white/[0.005] px-4 py-2 text-xs uppercase tracking-[0.2em] text-gray-300">
                   <span
                     className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_0_6px_rgba(52,211,153,0.15)]"
                     aria-hidden="true"
@@ -210,7 +207,7 @@ export default function Home() {
 
                   {/* Speed Stats Bar */}
                   <div
-                    className="flex flex-wrap gap-6 rounded-xl border border-emerald-400/30 bg-emerald-500/10 p-4 shadow-[0_10px_50px_-20px_rgba(52,211,153,0.5)] backdrop-blur"
+                    className="flex flex-wrap gap-6 rounded-xl border border-emerald-400/20 bg-emerald-500/[0.005] p-4 shadow-[0_10px_50px_-20px_rgba(52,211,153,0.5)] backdrop-blur"
                     role="region"
                     aria-label="Speed to Lead Statistics"
                   >
@@ -247,58 +244,42 @@ export default function Home() {
             </div>
           </div>
 
-          <div
-            className="relative w-full overflow-hidden"
-            style={{ aspectRatio: "16 / 9" }}
-          >
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: "url('/assets/Hero-Photo2.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-              }}
-              aria-hidden="true"
-            />
-            <div
-              className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-transparent"
-              aria-hidden="true"
-            />
-            <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-              <div className="max-w-4xl space-y-6 rounded-3xl border border-white/10 bg-white/10 p-6 backdrop-blur-xl shadow-[0_25px_70px_-50px_rgba(15,118,110,0.5)] sm:p-8">
-                <h2 id="process-heading" className="text-2xl font-semibold text-white">
-                  Our Process
-                </h2>
-                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-                  {processPoints.map((item, index) => (
-                    <article
-                      key={item.title}
-                      className="rounded-xl border border-white/10 bg-white/10 p-4 shadow-[0_1px_0_rgba(255,255,255,0.08)]"
-                    >
-                      <div className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white/10 text-emerald-300">
-                        <span className="text-sm font-semibold">
-                          {index + 1}
-                        </span>
-                      </div>
-                      <h3 className="text-lg font-semibold text-white">
-                        {item.title}
-                      </h3>
-                      <p className="mt-2 text-sm text-gray-300">{item.body}</p>
-                    </article>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
         </section>
 
-        {/* Snapshot Form Section */}
-        <section
-          id="snapshot"
-          aria-labelledby="snapshot-heading"
-          className="scroll-mt-8 rounded-3xl border border-white/15 bg-black/50 p-8 shadow-[0_30px_120px_-80px_rgba(16,185,129,0.6)] backdrop-blur lg:p-10"
-        >
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
+          {/* Process Section */}
+          <section aria-labelledby="process-heading" className="scroll-mt-8">
+            <div className="max-w-4xl space-y-6 rounded-3xl border border-white/[0.03] bg-white/[0.005] p-6 backdrop-blur-xl shadow-[0_25px_70px_-50px_rgba(15,118,110,0.5)] sm:p-8">
+              <h2 id="process-heading" className="text-2xl font-semibold text-white">
+                Our Process
+              </h2>
+              <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+                {processPoints.map((item, index) => (
+                  <article
+                    key={item.title}
+                    className="rounded-xl border border-white/[0.03] bg-white/[0.005] p-4 shadow-[0_1px_0_rgba(255,255,255,0.08)]"
+                  >
+                    <div className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white/10 text-emerald-300">
+                      <span className="text-sm font-semibold">
+                        {index + 1}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-gray-300">{item.body}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Snapshot Form Section */}
+          <section
+            id="snapshot"
+            aria-labelledby="snapshot-heading"
+            className="scroll-mt-8 rounded-3xl border border-white/15 bg-black/50 p-8 shadow-[0_30px_120px_-80px_rgba(16,185,129,0.6)] backdrop-blur lg:p-10"
+          >
           <div className="flex flex-col gap-3">
             <h2
               id="snapshot-heading"
@@ -445,15 +426,15 @@ export default function Home() {
               .
             </p>
           </form>
-        </section>
+          </section>
 
-        <div
-          className="h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent"
-          aria-hidden="true"
-        />
+          <div
+            className="h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent"
+            aria-hidden="true"
+          />
 
-        {/* What We Do Section */}
-        <section id="what-we-do" className="space-y-4 scroll-mt-8">
+          {/* What We Do Section */}
+          <section id="what-we-do" className="space-y-4 scroll-mt-8">
           <h2 className="text-2xl font-semibold text-white">
             What We Actually Do
           </h2>
@@ -500,13 +481,13 @@ export default function Home() {
               </li>
             </ul>
           </div>
-        </section>
+          </section>
 
-        {/* Fit Call Section */}
-        <section
-          id="fit-call"
-          className="space-y-4 scroll-mt-8 rounded-2xl border border-white/10 bg-white/10 p-8 shadow-[0_20px_80px_-60px_rgba(255,255,255,0.45)]"
-        >
+          {/* Fit Call Section */}
+          <section
+            id="fit-call"
+            className="space-y-4 scroll-mt-8 rounded-2xl border border-white/10 bg-white/10 p-8 shadow-[0_20px_80px_-60px_rgba(255,255,255,0.45)]"
+          >
           <h2 className="text-2xl font-semibold text-white">
             Book a 15-Minute Strategy Call
           </h2>
@@ -523,13 +504,13 @@ export default function Home() {
           >
             Book Your Strategy Call →
           </a>
-        </section>
+          </section>
 
-        {/* Chat Widget Section */}
-        <section
-          aria-labelledby="chat-heading"
-          className="rounded-2xl border border-white/10 bg-neutral-950/70 p-8 shadow-[0_20px_80px_-60px_rgba(16,185,129,0.35)] backdrop-blur"
-        >
+          {/* Chat Widget Section */}
+          <section
+            aria-labelledby="chat-heading"
+            className="rounded-2xl border border-white/10 bg-neutral-950/70 p-8 shadow-[0_20px_80px_-60px_rgba(16,185,129,0.35)] backdrop-blur"
+          >
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h3 id="chat-heading" className="text-xl font-semibold text-white">
@@ -596,10 +577,10 @@ export default function Home() {
               </button>
             </div>
           </div>
-        </section>
+          </section>
 
-        {/* Footer */}
-        <footer className="border-t border-white/10 pt-8 text-center text-sm text-gray-400">
+          {/* Footer */}
+          <footer className="border-t border-white/10 pt-8 text-center text-sm text-gray-400">
           <p>
             © {new Date().getFullYear()} XenTeck. AI automation consulting for
             businesses that want to move faster.
@@ -621,7 +602,8 @@ export default function Home() {
               Terms of Service
             </a>
           </div>
-        </footer>
+          </footer>
+        </div>
       </main>
     </div>
   );
