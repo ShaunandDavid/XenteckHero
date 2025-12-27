@@ -1,8 +1,14 @@
 import { NextResponse } from "next/server";
 
+type ChatMessage = {
+  role: "user" | "assistant";
+  content: string;
+};
+
 type ChatRequestBody = {
   message?: string;
   threadId?: string;
+  messages?: ChatMessage[];
 };
 
 const OPENAI_BASE_URL = "https://api.openai.com/v1";
@@ -42,9 +48,7 @@ const getAssistantResponse = async (
     const threadResponse = await fetch(`${OPENAI_BASE_URL}/threads`, {
       method: "POST",
       headers,
-      body: JSON.stringify({
-        messages: [{ role: "user", content: message }],
-      }),
+      body: JSON.stringify({}),
     });
 
     if (!threadResponse.ok) {
@@ -60,48 +64,60 @@ const getAssistantResponse = async (
     if (!threadId) {
       throw new Error("Missing thread id");
     }
-  } else {
-    const messageResponse = await fetch(
-      `${OPENAI_BASE_URL}/threads/${threadId}/messages`,
-      {
+  }
+
+  let messageResponse = await fetch(
+    `${OPENAI_BASE_URL}/threads/${threadId}/messages`,
+    {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        role: "user",
+        content: message,
+      }),
+    },
+  );
+
+  if (!messageResponse.ok) {
+    if (messageResponse.status === 404) {
+      const resetResponse = await fetch(`${OPENAI_BASE_URL}/threads`, {
         method: "POST",
         headers,
-        body: JSON.stringify({
-          role: "user",
-          content: message,
-        }),
-      },
-    );
+        body: JSON.stringify({}),
+      });
 
-    if (!messageResponse.ok) {
-      if (messageResponse.status === 404) {
-        const resetResponse = await fetch(`${OPENAI_BASE_URL}/threads`, {
+      if (!resetResponse.ok) {
+        const errorText = await resetResponse.text();
+        throw new Error(
+          `Failed to recreate thread (${resetResponse.status}): ${errorText}`,
+        );
+      }
+
+      const resetData = (await resetResponse.json()) as { id?: string };
+      threadId = resetData.id;
+
+      if (!threadId) {
+        throw new Error("Missing thread id");
+      }
+
+      messageResponse = await fetch(
+        `${OPENAI_BASE_URL}/threads/${threadId}/messages`,
+        {
           method: "POST",
           headers,
           body: JSON.stringify({
-            messages: [{ role: "user", content: message }],
+            role: "user",
+            content: message,
           }),
-        });
+        },
+      );
+    }
 
-        if (!resetResponse.ok) {
-          const errorText = await resetResponse.text();
-          throw new Error(
-            `Failed to recreate thread (${resetResponse.status}): ${errorText}`,
-          );
-        }
-
-        const resetData = (await resetResponse.json()) as { id?: string };
-        threadId = resetData.id;
-
-        if (!threadId) {
-          throw new Error("Missing thread id");
-        }
-      } else {
-        const errorText = await messageResponse.text();
-        throw new Error(
-          `Failed to add message (${messageResponse.status}): ${errorText}`,
-        );
-      }
+    if (!messageResponse.ok) {
+      const errorText = await messageResponse.text();
+      throw new Error(
+        `Failed to add message (${messageResponse.status}): ${errorText}`,
+      );
     }
   }
 
@@ -111,7 +127,6 @@ const getAssistantResponse = async (
     body: JSON.stringify({
       assistant_id: assistantId,
       temperature: 0.4,
-      max_output_tokens: 220,
       additional_instructions: ASSISTANT_PRIMER,
     }),
   });
@@ -207,8 +222,18 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const message = body.message?.toString().slice(0, 2000).trim() ?? "";
+  let message = body.message?.toString().slice(0, 2000).trim() ?? "";
   const threadId = body.threadId?.toString().trim() ?? "";
+
+  if (!message && Array.isArray(body.messages)) {
+    const lastUserMessage = [...body.messages]
+      .reverse()
+      .find(
+        (msg) =>
+          msg.role === "user" && typeof msg.content === "string" && msg.content,
+      );
+    message = lastUserMessage?.content?.toString().slice(0, 2000).trim() ?? "";
+  }
 
   if (!message) {
     return NextResponse.json(
@@ -225,8 +250,10 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     console.error("Failed to call OpenAI Assistant", error);
+    const detail =
+      error instanceof Error ? error.message : "Failed to reach model provider";
     return NextResponse.json(
-      { error: "Failed to reach model provider" },
+      { error: detail },
       { status: 502 },
     );
   }
