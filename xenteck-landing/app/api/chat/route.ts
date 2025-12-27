@@ -207,8 +207,10 @@ const getAssistantResponse = async (
     .join("\n")
     .trim();
 
+  const cleaned = (text ?? "").replace(/\s*【[^】]*】/g, "").trim();
+
   return {
-    text: text || "Sorry, I could not generate a reply.",
+    text: cleaned || "Sorry, I could not generate a reply.",
     threadId,
   };
 };
