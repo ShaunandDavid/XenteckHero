@@ -178,9 +178,9 @@ export default function Home() {
               className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"
               aria-hidden="true"
             />
-            <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-              <div className="max-w-2xl space-y-10 rounded-3xl border border-white/[0.03] bg-white/[0.005] p-6 backdrop-blur-xl shadow-[0_25px_70px_-50px_rgba(15,118,110,0.6)] sm:p-8">
-                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/[0.03] bg-white/[0.005] px-4 py-2 text-xs uppercase tracking-[0.2em] text-gray-300">
+            <div className="relative z-10 w-full max-w-6xl px-4 pt-6 pb-12 sm:px-6 sm:pt-8 lg:px-6 lg:pt-10">
+              <div className="max-w-2xl space-y-10">
+                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-black/60 px-4 py-2 text-xs uppercase tracking-[0.2em] text-gray-200">
                   <span
                     className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_0_6px_rgba(52,211,153,0.15)]"
                     aria-hidden="true"
@@ -207,7 +207,7 @@ export default function Home() {
 
                   {/* Speed Stats Bar */}
                   <div
-                    className="flex flex-wrap gap-6 rounded-xl border border-emerald-400/20 bg-emerald-500/[0.005] p-4 shadow-[0_10px_50px_-20px_rgba(52,211,153,0.5)] backdrop-blur"
+                    className="flex flex-wrap gap-6 rounded-xl border border-emerald-400/40 bg-emerald-950/60 p-4 shadow-[0_10px_50px_-20px_rgba(52,211,153,0.5)]"
                     role="region"
                     aria-label="Speed to Lead Statistics"
                   >
