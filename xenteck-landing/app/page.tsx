@@ -159,68 +159,115 @@ export default function Home() {
 
       <main className="relative z-10 mx-auto flex max-w-6xl flex-col gap-16 px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         {/* Hero Section */}
-        <header className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-start">
-          <div className="space-y-10 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl shadow-[0_25px_70px_-50px_rgba(15,118,110,0.6)] sm:p-8">
-            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em] text-gray-300">
-              <span
-                className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_0_6px_rgba(52,211,153,0.15)]"
-                aria-hidden="true"
-              />
-              <span>XenTeck / AI Automation Consulting</span>
-            </div>
+        <section
+          aria-labelledby="hero-heading"
+          className="-mx-4 flex flex-col sm:-mx-6 lg:-mx-8"
+        >
+          <div
+            className="relative w-full overflow-hidden"
+            style={{ aspectRatio: "16 / 9" }}
+          >
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: "url('/assets/Hero-Photo.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "right top",
+                backgroundRepeat: "no-repeat",
+              }}
+              aria-hidden="true"
+            />
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"
+              aria-hidden="true"
+            />
+            <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+              <div className="max-w-2xl space-y-10 rounded-3xl border border-white/10 bg-white/10 p-6 backdrop-blur-xl shadow-[0_25px_70px_-50px_rgba(15,118,110,0.6)] sm:p-8">
+                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em] text-gray-300">
+                  <span
+                    className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_0_6px_rgba(52,211,153,0.15)]"
+                    aria-hidden="true"
+                  />
+                  <span>XenTeck / AI Automation Consulting</span>
+                </div>
 
-            <div className="space-y-8">
-              <div className="space-y-5">
-                <h1 className="text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
-                  Stop Losing Leads to Slow Response Times
-                </h1>
-                <p className="max-w-xl text-base text-gray-300 sm:text-lg">
-                  <strong>78% of deals go to the first responder.</strong>{" "}
-                  XenTeck builds AI-powered automation systems that contact your
-                  leads in <em>under 6 seconds</em> - not 6 hours. We audit your
-                  operations, find where you're bleeding money, and wire in
-                  automation that actually works.
-                </p>
-              </div>
-
-              {/* Speed Stats Bar */}
-              <div
-                className="flex flex-wrap gap-6 rounded-xl border border-emerald-400/30 bg-emerald-500/10 p-4 shadow-[0_10px_50px_-20px_rgba(52,211,153,0.5)] backdrop-blur"
-                role="region"
-                aria-label="Speed to Lead Statistics"
-              >
-                {stats.map((stat) => (
-                  <div key={stat.label} className="flex items-baseline gap-1">
-                    <span className="text-3xl font-bold text-emerald-400">
-                      {stat.value}
-                    </span>
-                    <span className="text-lg text-emerald-300">{stat.unit}</span>
-                    <span className="ml-2 text-sm text-gray-300">
-                      {stat.label}
-                    </span>
+                <div className="space-y-8">
+                  <div className="space-y-5">
+                    <h1
+                      id="hero-heading"
+                      className="text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl"
+                    >
+                      Stop Losing Leads to Slow Response Times
+                    </h1>
+                    <p className="max-w-xl text-base text-gray-300 sm:text-lg">
+                      <strong>78% of deals go to the first responder.</strong>{" "}
+                      XenTeck builds AI-powered automation systems that contact
+                      your leads in <em>under 6 seconds</em> - not 6 hours. We
+                      audit your operations, find where you're bleeding money,
+                      and wire in automation that actually works.
+                    </p>
                   </div>
-                ))}
-              </div>
 
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-                <a
-                  href={calendarBookingLink}
-                  className="inline-flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-gray-200"
-                  aria-label="Book a 15-minute strategy call with XenTeck"
-                >
-                  Book a 15-min Strategy Call
-                </a>
-                <a
-                  href="#snapshot"
-                  className="text-sm font-medium text-gray-300 transition hover:text-white"
-                >
-                  Not ready to talk yet? Get a free AI Snapshot
-                </a>
-              </div>
+                  {/* Speed Stats Bar */}
+                  <div
+                    className="flex flex-wrap gap-6 rounded-xl border border-emerald-400/30 bg-emerald-500/10 p-4 shadow-[0_10px_50px_-20px_rgba(52,211,153,0.5)] backdrop-blur"
+                    role="region"
+                    aria-label="Speed to Lead Statistics"
+                  >
+                    {stats.map((stat) => (
+                      <div key={stat.label} className="flex items-baseline gap-1">
+                        <span className="text-3xl font-bold text-emerald-400">
+                          {stat.value}
+                        </span>
+                        <span className="text-lg text-emerald-300">{stat.unit}</span>
+                        <span className="ml-2 text-sm text-gray-300">
+                          {stat.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
 
-              {/* Process Cards */}
-              <section aria-labelledby="process-heading" className="pt-4">
-                <h2 id="process-heading" className="sr-only">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+                    <a
+                      href={calendarBookingLink}
+                      className="inline-flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-gray-200"
+                      aria-label="Book a 15-minute strategy call with XenTeck"
+                    >
+                      Book a 15-min Strategy Call
+                    </a>
+                    <a
+                      href="#snapshot"
+                      className="text-sm font-medium text-gray-300 transition hover:text-white"
+                    >
+                      Not ready to talk yet? Get a free AI Snapshot
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            className="relative w-full overflow-hidden"
+            style={{ aspectRatio: "16 / 9" }}
+          >
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: "url('/assets/Hero-Photo2.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+              aria-hidden="true"
+            />
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-transparent"
+              aria-hidden="true"
+            />
+            <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+              <div className="max-w-4xl space-y-6 rounded-3xl border border-white/10 bg-white/10 p-6 backdrop-blur-xl shadow-[0_25px_70px_-50px_rgba(15,118,110,0.5)] sm:p-8">
+                <h2 id="process-heading" className="text-2xl font-semibold text-white">
                   Our Process
                 </h2>
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
@@ -241,35 +288,9 @@ export default function Home() {
                     </article>
                   ))}
                 </div>
-              </section>
+              </div>
             </div>
           </div>
-
-          <div className="w-full">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-2 backdrop-blur-xl shadow-[0_35px_90px_-70px_rgba(59,130,246,0.55)]">
-              <img
-                src="/assets/Hero-Photo.png"
-                alt="XenTeck speed to lead visual"
-                className="w-full rounded-[1.4rem] object-contain"
-                loading="eager"
-              />
-            </div>
-          </div>
-        </header>
-
-        <section
-          aria-labelledby="hero-visual-heading"
-          className="rounded-3xl border border-white/10 bg-white/5 p-2 shadow-[0_30px_120px_-80px_rgba(15,118,110,0.45)] backdrop-blur"
-        >
-          <h2 id="hero-visual-heading" className="sr-only">
-            Speed to lead visual
-          </h2>
-          <img
-            src="/assets/Hero-Photo2.png"
-            alt="XenTeck speed to lead visual"
-            className="w-full rounded-[1.4rem] object-contain"
-            loading="lazy"
-          />
         </section>
 
         {/* Snapshot Form Section */}
