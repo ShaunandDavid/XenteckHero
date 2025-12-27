@@ -150,11 +150,11 @@ export default function Home() {
       style={{
         backgroundImage: "url('/assets/Hero-Photo.png')",
         backgroundSize: "cover",
-        backgroundPosition: "left center",
+        backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/60 to-black/80" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" aria-hidden="true" />
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute -left-24 top-10 h-80 w-80 rounded-full bg-emerald-500/15 blur-3xl" />
         <div className="absolute right-[-6rem] top-32 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
@@ -164,7 +164,7 @@ export default function Home() {
 
       <main className="relative z-10 mx-auto flex max-w-5xl flex-col gap-16 px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         {/* Hero Section */}
-        <header className="space-y-10 ml-auto max-w-xl lg:max-w-2xl">
+        <header className="space-y-10 mr-auto max-w-xl lg:max-w-2xl">
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em] text-gray-300">
             <span
               className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_0_6px_rgba(52,211,153,0.15)]"
