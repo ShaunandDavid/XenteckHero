@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 
 type ChatMessage = {
@@ -53,12 +53,20 @@ export default function Home() {
     {
       role: "assistant",
       content:
-        "Hey, I'm the XenTeck AI systems assistant. Ask me about the Snapshot, our sprints, or whether we're a fit.",
+        "Hey, I'm the XenTeck AI Concierge. Ask me about Speed-to-Lead timing, setup, or whether it's a fit.",
     },
   ]);
   const [chatInput, setChatInput] = useState("");
   const [chatStatus, setChatStatus] = useState<ChatStatus>("idle");
   const [chatError, setChatError] = useState("");
+  const [chatThreadId, setChatThreadId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const storedThreadId = window.localStorage.getItem("xenteckChatThreadId");
+    if (storedThreadId) {
+      setChatThreadId(storedThreadId);
+    }
+  }, []);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -123,15 +131,20 @@ export default function Home() {
     setChatInput("");
 
     try {
+      const payload = chatThreadId
+        ? { message: question, threadId: chatThreadId }
+        : { message: question };
+
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: nextMessages.slice(-8) }),
+        body: JSON.stringify(payload),
       });
 
       const data = (await response.json().catch(() => ({}))) as {
         message?: string;
         error?: string;
+        threadId?: string;
       };
 
       if (!response.ok || !data.message) {
@@ -142,6 +155,10 @@ export default function Home() {
         ...prev,
         { role: "assistant", content: data.message ?? "" },
       ]);
+      if (data.threadId) {
+        setChatThreadId(data.threadId);
+        window.localStorage.setItem("xenteckChatThreadId", data.threadId);
+      }
       setChatStatus("idle");
     } catch (error) {
       setChatStatus("error");
@@ -575,8 +592,8 @@ export default function Home() {
                 Ask XenTeck
               </h3>
               <p className="text-sm text-gray-300">
-                Live answers about our snapshot, sprints, and fit calls. Powered
-                by AI.
+                Live answers about Speed-to-Lead response times, setup, and fit.
+                Powered by AI.
               </p>
             </div>
             {chatError && (
@@ -622,7 +639,7 @@ export default function Home() {
                     sendChat();
                   }
                 }}
-                placeholder="Ask about the snapshot, sprints, or fit calls..."
+                placeholder="Ask about Speed-to-Lead timing, setup, or fit..."
                 className="flex-1 rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-500 focus:border-emerald-400 focus:outline-none focus:ring-1 focus:ring-emerald-400/50"
               />
               <button
