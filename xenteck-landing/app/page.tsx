@@ -249,27 +249,36 @@ export default function Home() {
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
           {/* Process Section */}
           <section aria-labelledby="process-heading" className="scroll-mt-8">
-            <div className="max-w-4xl space-y-6 rounded-3xl border border-white/[0.03] bg-white/[0.005] p-6 backdrop-blur-xl shadow-[0_25px_70px_-50px_rgba(15,118,110,0.5)] sm:p-8">
-              <h2 id="process-heading" className="text-2xl font-semibold text-white">
-                Our Process
-              </h2>
-              <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-                {processPoints.map((item, index) => (
-                  <article
-                    key={item.title}
-                    className="rounded-xl border border-white/[0.03] bg-white/[0.005] p-4 shadow-[0_1px_0_rgba(255,255,255,0.08)]"
-                  >
-                    <div className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white/10 text-emerald-300">
-                      <span className="text-sm font-semibold">
-                        {index + 1}
-                      </span>
-                    </div>
-                    <h3 className="text-lg font-semibold text-white">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-gray-300">{item.body}</p>
-                  </article>
-                ))}
+            <div className="relative max-w-4xl rounded-3xl border border-emerald-400/25 bg-white/[0.005] p-6 backdrop-blur-xl shadow-[0_35px_120px_-80px_rgba(16,185,129,0.8)] sm:p-8">
+              <div
+                className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(90%_120%_at_15%_0%,rgba(16,185,129,0.18),transparent_65%)]"
+                aria-hidden="true"
+              />
+              <div className="relative z-10 space-y-6">
+                <h2
+                  id="process-heading"
+                  className="text-2xl font-semibold text-white"
+                >
+                  Our Process
+                </h2>
+                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+                  {processPoints.map((item, index) => (
+                    <article
+                      key={item.title}
+                      className="rounded-xl border border-white/[0.08] bg-white/[0.01] p-4 shadow-[0_15px_40px_-25px_rgba(16,185,129,0.45)]"
+                    >
+                      <div className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-200 ring-1 ring-emerald-400/40 shadow-[0_0_20px_rgba(16,185,129,0.35)]">
+                        <span className="text-sm font-semibold">
+                          {index + 1}
+                        </span>
+                      </div>
+                      <h3 className="text-lg font-semibold text-white">
+                        {item.title}
+                      </h3>
+                      <p className="mt-2 text-sm text-gray-300">{item.body}</p>
+                    </article>
+                  ))}
+                </div>
               </div>
             </div>
           </section>
@@ -278,8 +287,13 @@ export default function Home() {
           <section
             id="snapshot"
             aria-labelledby="snapshot-heading"
-            className="scroll-mt-8 rounded-3xl border border-white/15 bg-black/50 p-8 shadow-[0_30px_120px_-80px_rgba(16,185,129,0.6)] backdrop-blur lg:p-10"
+            className="relative scroll-mt-8 overflow-hidden rounded-3xl border border-emerald-400/30 bg-black/40 p-8 shadow-[0_40px_140px_-80px_rgba(16,185,129,0.9)] backdrop-blur lg:p-10"
           >
+          <div
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_100%_at_20%_0%,rgba(16,185,129,0.18),transparent_60%)]"
+            aria-hidden="true"
+          />
+          <div className="relative z-10">
           <div className="flex flex-col gap-3">
             <h2
               id="snapshot-heading"
@@ -426,6 +440,7 @@ export default function Home() {
               .
             </p>
           </form>
+          </div>
           </section>
 
           <div
@@ -508,9 +523,22 @@ export default function Home() {
 
           {/* Chat Widget Section */}
           <section
+            id="chat"
             aria-labelledby="chat-heading"
-            className="rounded-2xl border border-white/10 bg-neutral-950/70 p-8 shadow-[0_20px_80px_-60px_rgba(16,185,129,0.35)] backdrop-blur"
+            className="relative overflow-hidden rounded-2xl border border-emerald-400/30 bg-neutral-950/70 p-8 shadow-[0_35px_120px_-80px_rgba(16,185,129,0.85)] backdrop-blur"
           >
+          <div
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_100%_at_85%_0%,rgba(16,185,129,0.16),transparent_60%)]"
+            aria-hidden="true"
+          />
+          <div className="absolute right-6 top-6 hidden items-center gap-2 rounded-full border border-emerald-400/40 bg-black/50 px-3 py-1 text-xs font-semibold text-emerald-100 shadow-[0_15px_40px_-25px_rgba(16,185,129,0.8)] backdrop-blur md:flex">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/70" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+            </span>
+            AI Concierge Live
+          </div>
+          <div className="relative z-10">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h3 id="chat-heading" className="text-xl font-semibold text-white">
@@ -577,6 +605,7 @@ export default function Home() {
               </button>
             </div>
           </div>
+          </div>
           </section>
 
           {/* Footer */}
@@ -604,6 +633,17 @@ export default function Home() {
           </div>
           </footer>
         </div>
+        <a
+          href="#chat"
+          className="fixed bottom-6 right-6 z-40 hidden items-center gap-3 rounded-full border border-emerald-400/40 bg-black/70 px-4 py-3 text-sm font-semibold text-emerald-100 shadow-[0_20px_60px_-25px_rgba(16,185,129,0.9)] backdrop-blur transition hover:brightness-110 md:inline-flex"
+          aria-label="Jump to the Ask XenTeck chat"
+        >
+          <span className="relative flex h-3 w-3">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/70" />
+            <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-400" />
+          </span>
+          Ask XenTeck
+        </a>
       </main>
     </div>
   );
