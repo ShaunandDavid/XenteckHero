@@ -24,9 +24,16 @@ const processPoints = [
 ] as const;
 
 const stats = [
-  { value: "6", unit: "sec", label: "Lead response time" },
-  { value: "391%", unit: "", label: "Conversion lift at 1 min" },
-  { value: "78%", unit: "", label: "Deals to first responder" },
+  {
+    value: "391%",
+    unit: "",
+    label: "Industry insight: Conversion lift when responding within 1 minute",
+  },
+  {
+    value: "78%",
+    unit: "",
+    label: "Industry insight: Buyers choose the first business to respond",
+  },
 ] as const;
 
 const calendarBookingLink = "https://calendar.app.google/HHLGN441YwhAhsWc8";
@@ -185,7 +192,7 @@ export default function Home() {
                     className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_0_6px_rgba(52,211,153,0.15)]"
                     aria-hidden="true"
                   />
-                  <span>XenTeck / AI Automation Consulting</span>
+                  <span>Speed-to-Lead / Instant Booking Links</span>
                 </div>
 
                 <div className="space-y-8">
@@ -194,14 +201,11 @@ export default function Home() {
                       id="hero-heading"
                       className="text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl"
                     >
-                      Stop Losing Leads to Slow Response Times
+                      Booking Links Delivered in Under 5 Seconds — Guaranteed
                     </h1>
                     <p className="max-w-xl text-base text-gray-300 sm:text-lg">
-                      <strong>78% of deals go to the first responder.</strong>{" "}
-                      XenTeck builds AI-powered automation systems that contact
-                      your leads in <em>under 6 seconds</em> - not 6 hours. We
-                      audit your operations, find where you're bleeding money,
-                      and wire in automation that actually works.
+                      Put Your Booking Link in Front of Leads Faster Than a
+                      Human Can React
                     </p>
                   </div>
 
@@ -209,7 +213,7 @@ export default function Home() {
                   <div
                     className="flex flex-wrap gap-6 rounded-xl border border-emerald-400/40 bg-emerald-950/60 p-4 shadow-[0_10px_50px_-20px_rgba(52,211,153,0.5)]"
                     role="region"
-                    aria-label="Speed to Lead Statistics"
+                    aria-label="Industry insight statistics"
                   >
                     {stats.map((stat) => (
                       <div key={stat.label} className="flex items-baseline gap-1">
@@ -226,17 +230,18 @@ export default function Home() {
 
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
                     <a
-                      href={calendarBookingLink}
+                      href="#demo"
                       className="inline-flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-gray-200"
-                      aria-label="Book a 15-minute strategy call with XenTeck"
+                      aria-label="See the live Speed-to-Lead demo"
                     >
-                      Book a 15-min Strategy Call
+                      See Live Demo
                     </a>
                     <a
-                      href="#snapshot"
-                      className="text-sm font-medium text-gray-300 transition hover:text-white"
+                      href={calendarBookingLink}
+                      className="inline-flex items-center justify-center rounded-md border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                      aria-label="Install Speed-to-Lead with a 48-hour deploy"
                     >
-                      Not ready to talk yet? Get a free AI Snapshot
+                      Install Speed-to-Lead (48-hr deploy)
                     </a>
                   </div>
                 </div>
@@ -247,73 +252,35 @@ export default function Home() {
         </section>
 
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
-          {/* Process Section */}
-          <section aria-labelledby="process-heading" className="scroll-mt-8">
-            <div className="relative max-w-4xl rounded-3xl border border-emerald-400/25 bg-white/[0.005] p-6 backdrop-blur-xl shadow-[0_35px_120px_-80px_rgba(16,185,129,0.8)] sm:p-8">
-              <div
-                className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(90%_120%_at_15%_0%,rgba(16,185,129,0.18),transparent_65%)]"
-                aria-hidden="true"
-              />
-              <div className="relative z-10 space-y-6">
-                <h2
-                  id="process-heading"
-                  className="text-2xl font-semibold text-white"
-                >
-                  Our Process
-                </h2>
-                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-                  {processPoints.map((item, index) => (
-                    <article
-                      key={item.title}
-                      className="rounded-xl border border-white/[0.08] bg-white/[0.01] p-4 shadow-[0_15px_40px_-25px_rgba(16,185,129,0.45)]"
-                    >
-                      <div className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-200 ring-1 ring-emerald-400/40 shadow-[0_0_20px_rgba(16,185,129,0.35)]">
-                        <span className="text-sm font-semibold">
-                          {index + 1}
-                        </span>
-                      </div>
-                      <h3 className="text-lg font-semibold text-white">
-                        {item.title}
-                      </h3>
-                      <p className="mt-2 text-sm text-gray-300">{item.body}</p>
-                    </article>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Snapshot Form Section */}
+          {/* Demo Section */}
           <section
-            id="snapshot"
-            aria-labelledby="snapshot-heading"
+            id="demo"
+            aria-labelledby="demo-heading"
             className="relative scroll-mt-8 overflow-hidden rounded-3xl border border-emerald-400/30 bg-black/40 p-8 shadow-[0_40px_140px_-80px_rgba(16,185,129,0.9)] backdrop-blur lg:p-10"
           >
-          <div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_100%_at_20%_0%,rgba(16,185,129,0.18),transparent_60%)]"
-            aria-hidden="true"
-          />
-          <div className="relative z-10">
-          <div className="flex flex-col gap-3">
-            <h2
-              id="snapshot-heading"
-              className="text-2xl font-semibold text-white"
-            >
-              Get Your Free AI Systems Snapshot
-            </h2>
-            <p className="text-base text-gray-300">
-              Drop your email and website. We'll send you{" "}
-              <strong>3 specific automation opportunities</strong> where you're
-              leaking time and money — and exactly what we'd fix first. No
-              generic advice. Real analysis.
-            </p>
-          </div>
+            <div
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_100%_at_20%_0%,rgba(16,185,129,0.18),transparent_60%)]"
+              aria-hidden="true"
+            />
+            <div className="relative z-10">
+              <div className="flex flex-col gap-3">
+                <h2
+                  id="demo-heading"
+                  className="text-2xl font-semibold text-white"
+                >
+                  See It In Real Time
+                </h2>
+                <p className="text-base text-gray-300">
+                  Fill out the form below to see how fast your booking link
+                  lands — often under 2 seconds.
+                </p>
+              </div>
 
-          <form
-            onSubmit={handleSubmit}
-            className="mt-8 grid gap-4 sm:grid-cols-2"
-            aria-label="AI Systems Snapshot request form"
-          >
+              <form
+                onSubmit={handleSubmit}
+                className="mt-8 grid gap-4 sm:grid-cols-2"
+                aria-label="AI Systems Snapshot request form"
+              >
             <div className="sm:col-span-1">
               <label
                 className="mb-2 block text-sm text-gray-300"
@@ -439,8 +406,71 @@ export default function Home() {
               </a>
               .
             </p>
-          </form>
-          </div>
+              </form>
+            </div>
+          </section>
+
+          {/* Industry Insights Section */}
+          <section
+            aria-labelledby="industry-insights-heading"
+            className="scroll-mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_25px_80px_-60px_rgba(16,185,129,0.45)] sm:p-8"
+          >
+            <h2
+              id="industry-insights-heading"
+              className="text-2xl font-semibold text-white"
+            >
+              Industry Insights
+            </h2>
+            <div className="mt-3 space-y-3 text-sm text-gray-300">
+              <p>
+                Responding to leads within the first minute can increase
+                conversion rates by up to 391% compared to slower follow-ups.
+                (Source: industry research)
+              </p>
+              <p>
+                Around 78% of buyers choose the first business that responds.
+                (Source: industry research)
+              </p>
+              <span className="text-xs text-gray-400 underline underline-offset-4">
+                Sources available upon request
+              </span>
+            </div>
+          </section>
+
+          {/* Process Section */}
+          <section aria-labelledby="process-heading" className="scroll-mt-8">
+            <div className="relative max-w-4xl rounded-3xl border border-emerald-400/25 bg-white/[0.005] p-6 backdrop-blur-xl shadow-[0_35px_120px_-80px_rgba(16,185,129,0.8)] sm:p-8">
+              <div
+                className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(90%_120%_at_15%_0%,rgba(16,185,129,0.18),transparent_65%)]"
+                aria-hidden="true"
+              />
+              <div className="relative z-10 space-y-6">
+                <h2
+                  id="process-heading"
+                  className="text-2xl font-semibold text-white"
+                >
+                  Our Process
+                </h2>
+                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+                  {processPoints.map((item, index) => (
+                    <article
+                      key={item.title}
+                      className="rounded-xl border border-white/[0.08] bg-white/[0.01] p-4 shadow-[0_15px_40px_-25px_rgba(16,185,129,0.45)]"
+                    >
+                      <div className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-200 ring-1 ring-emerald-400/40 shadow-[0_0_20px_rgba(16,185,129,0.35)]">
+                        <span className="text-sm font-semibold">
+                          {index + 1}
+                        </span>
+                      </div>
+                      <h3 className="text-lg font-semibold text-white">
+                        {item.title}
+                      </h3>
+                      <p className="mt-2 text-sm text-gray-300">{item.body}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </div>
           </section>
 
           <div
