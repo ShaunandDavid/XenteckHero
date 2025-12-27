@@ -178,19 +178,19 @@ const getAssistantResponse = async (
     throw new Error("Run timed out");
   }
 
-  const messageResponse = await fetch(
+  const latestResponse = await fetch(
     `${OPENAI_BASE_URL}/threads/${threadId}/messages?limit=1&order=desc`,
     { headers },
   );
 
-  if (!messageResponse.ok) {
-    const errorText = await messageResponse.text();
+  if (!latestResponse.ok) {
+    const errorText = await latestResponse.text();
     throw new Error(
-      `Failed to fetch messages (${messageResponse.status}): ${errorText}`,
+      `Failed to fetch messages (${latestResponse.status}): ${errorText}`,
     );
   }
 
-  const messageData = (await messageResponse.json()) as {
+  const messageData = (await latestResponse.json()) as {
     data?: Array<{
       role?: string;
       content?: Array<{
