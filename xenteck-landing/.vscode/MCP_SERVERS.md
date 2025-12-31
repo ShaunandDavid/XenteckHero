@@ -26,19 +26,27 @@ MCP (Model Context Protocol) is an open standard that allows AI assistants like 
 
 To use the OpenAI MCP server, you need to:
 1. Get an OpenAI API key from https://platform.openai.com/api-keys
-2. Replace `"your-openai-api-key-here"` in `mcp.json` with your actual API key
+2. Add your API key to the `mcp.json` file by replacing the empty string in `OPENAI_API_KEY`
 
-**Note**: For security, consider using environment variables instead of hardcoding the API key. You can set it in your shell:
+**IMPORTANT SECURITY NOTES**:
+- The `mcp.json` file should contain an empty string `""` for the API key by default
+- **DO NOT commit your actual API key to version control**
+- Set your API key locally after cloning the repository
+- For shared environments, use environment variables instead:
+
 ```bash
+# Set in your shell
 export OPENAI_API_KEY="sk-..."
 ```
 
-Then update the mcp.json to reference it (if your MCP client supports this):
+Then update the mcp.json to reference it (if your MCP client supports environment variable substitution):
 ```json
 "env": {
   "OPENAI_API_KEY": "${OPENAI_API_KEY}"
 }
 ```
+
+Or keep the mcp.json with empty string and set the environment variable before starting your MCP client.
 
 ### About Claude MCP Server
 

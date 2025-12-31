@@ -6,10 +6,11 @@
       "args": ["mcp-remote", "https://rube.app/mcp"]
     },
     "openai": {
+      "type": "stdio",
       "command": "npx",
       "args": ["-y", "@mzxrai/mcp-openai@latest"],
       "env": {
-        "OPENAI_API_KEY": "your-openai-api-key-here"
+        "OPENAI_API_KEY": ""
       }
     }
   },
