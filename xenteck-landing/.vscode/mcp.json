@@ -4,6 +4,13 @@
       "type": "stdio",
       "command": "npx",
       "args": ["mcp-remote", "https://rube.app/mcp"]
+    },
+    "openai": {
+      "command": "npx",
+      "args": ["-y", "@mzxrai/mcp-openai@latest"],
+      "env": {
+        "OPENAI_API_KEY": "your-openai-api-key-here"
+      }
     }
   },
   "inputs": []
