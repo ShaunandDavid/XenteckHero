@@ -89,6 +89,7 @@ All MCP servers follow this format in `mcp.json`:
 {
   "servers": {
     "server-name": {
+      "type": "stdio",
       "command": "npx",
       "args": ["-y", "package-name@latest"],
       "env": {
